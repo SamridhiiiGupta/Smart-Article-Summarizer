@@ -1,17 +1,23 @@
 # Smart Article Summarizer
 
-A web application that summarizes news articles, highlights key points, and performs sentiment analysis using Natural Language Processing.
+A web application that summarizes news articles, extracts key points, and performs sentiment analysis using Natural Language Processing (NLP).
 
 ## Features
+- **Article Summarization**: Get concise summaries of any news article.
+- **Key Points Extraction**: Automatically identify and highlight important points.
+- **Sentiment Analysis**: Determine if the article has a positive, negative, or neutral tone.
+- **User-Friendly Interface**: Simple and intuitive design.
+- **Paywall Handling**: Fallback mechanisms to handle articles behind paywalls.
 
-- **Article Summarization**: Get concise summaries of any news article
-- **Key Points Extraction**: Automatically identify and highlight important points
-- **Sentiment Analysis**: Determine if the article has a positive, negative, or neutral tone
-- **User-Friendly Interface**: Simple and intuitive design
-- **Paywall Handling**: Fallback mechanisms to handle articles behind paywalls
+## Technologies Used
+- **Flask**: A lightweight web framework for building the application.
+- **NLTK**: A powerful library for natural language processing.
+- **BeautifulSoup4**: For web scraping and parsing HTML content.
+- **Requests**: For making HTTP requests to fetch article content.
+- **Transformers (Hugging Face)**: For advanced AI-based summarization (optional).
+- **PyTorch**: A framework for deep learning, used if you want to run AI-based summarization (optional).
 
 ## Requirements
-
 - Python 3.7+
 - Basic dependencies:
   - Flask
@@ -24,81 +30,113 @@ A web application that summarizes news articles, highlights key points, and perf
 
 ## Installation
 
-1. Clone this repository:
-   ```
-   git clone <repository-url>
-   cd article-summarizer
-   ```
+### 1. Clone the repository:
+```bash
+git clone <repository-url>
+cd News_Article_Summarizer
+````
 
-2. Run the application using the run.py script, which will guide you through dependency installation:
-   ```
-   python run.py
-   ```
+### 2. Install dependencies:
 
-## Usage Options
+Run the `run.py` script, which will guide you through dependency installation.
 
-There are multiple ways to run the application based on your system capabilities:
-
-### 1. Full Version (with AI summarization)
-If your system supports PyTorch and Transformers, this will use the Hugging Face pipeline for advanced summarization:
-```
+```bash
 python run.py
 ```
 
-### 2. Basic Version (without AI summarization)
-If you have issues installing PyTorch or Transformers, you can still run with basic extractive summarization:
+If you're missing basic dependencies, the script will prompt you to install them.
+
+### 3. Alternative Installation (if you face issues with dependencies):
+
+You can manually install the required dependencies:
+
+```bash
+pip install Flask==1.1.2
+pip install NLTK
+pip install BeautifulSoup4
+pip install Requests
 ```
+
+To install optional advanced features:
+
+```bash
+pip install transformers
+pip install torch
+```
+
+## Usage
+
+You have multiple ways to run the application based on your system configuration:
+
+### 1. Full Version (with AI summarization):
+
+If your system supports PyTorch and Transformers, this will use the Hugging Face pipeline for advanced summarization:
+
+```bash
+python run.py
+```
+
+### 2. Basic Version (without AI summarization):
+
+If you face issues installing PyTorch or Transformers, you can run the app with basic extractive summarization:
+
+```bash
 python fallback.py
 ```
 
-### 3. Interactive Setup
-The `run.py` script will automatically detect available dependencies and offer appropriate options:
-```
+### 3. Interactive Setup:
+
+The `run.py` script will automatically detect available dependencies and offer you the appropriate options based on your system's capabilities:
+
+```bash
 python run.py
 ```
 
 ## How It Works
 
-1. **Web Scraping**: The application fetches the article's content using the URL provided
-2. **Text Extraction**: It extracts the main text from the HTML using BeautifulSoup
-3. **Summarization**: 
-   - Full version: Uses Hugging Face Transformers for AI-based abstractive summarization
-   - Basic version: Uses extractive summarization (first few sentences and key points)
-4. **Key Points Extraction**: Important sentences are identified based on key indicators and relevance
-5. **Sentiment Analysis**: NLTK's Sentiment Intensity Analyzer determines the overall sentiment of the article
+1. **Web Scraping**: The app fetches the article's content from a URL provided by the user.
+2. **Text Extraction**: The main text of the article is extracted from the HTML using BeautifulSoup.
+3. **Summarization**:
+
+   * **Full version**: Uses the Hugging Face Transformers for AI-based **abstractive summarization**.
+   * **Basic version**: Uses simple **extractive summarization** by picking the first few sentences and key points.
+4. **Key Points Extraction**: Important sentences are identified based on key indicators and relevance.
+5. **Sentiment Analysis**: NLTK’s Sentiment Intensity Analyzer determines the overall sentiment of the article.
 
 ## Troubleshooting
 
-If you encounter issues with PyTorch installation:
+If you encounter issues during installation or while running the application:
 
-1. Try using the basic version:
-   ```
-   python fallback.py
-   ```
+* Ensure that you have the correct versions of dependencies.
+* If you face issues with PyTorch installation, use the basic version:
 
-2. Or manually install PyTorch appropriate for your system following the official instructions:
-   ```
-   # After installing PyTorch correctly
-   python app.py
-   ```
+  ```bash
+  python fallback.py
+  ```
+* Try upgrading pip and setuptools:
 
-3. Update your pip and setuptools:
-   ```
-   pip install --upgrade pip setuptools wheel
-   ```
+  ```bash
+  pip install --upgrade pip setuptools wheel
+  ```
 
 ## Limitations
 
-- The application works best with standard news article formats
-- Very long articles may be truncated for processing
-- The quality of the summary depends on the article's structure and content
-- Some websites may block web scraping
-- The basic version provides simpler summaries without AI modeling
+* The app works best with standard news article formats.
+* Very long articles may be truncated for processing.
+* The quality of the summary depends on the article’s structure and content.
+* Some websites may block web scraping.
+* The basic version provides simpler summaries without AI modeling.
 
 ## Future Improvements
 
-- Add support for PDF articles
-- Implement more advanced key points extraction algorithms
-- Add multilingual support
-- Include topic classification
-- Enable saving and comparing multiple article summaries 
+* Add support for summarizing PDF articles.
+* Implement more advanced key points extraction algorithms.
+* Add multilingual support for article summarization.
+* Include topic classification for articles.
+* Enable saving and comparing multiple article summaries.
+
+---
+
+Feel free to ask any questions or submit issues via the GitHub Issues tab. Happy coding! 🚀
+
+```
