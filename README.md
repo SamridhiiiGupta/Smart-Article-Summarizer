@@ -138,5 +138,3 @@ If you encounter issues during installation or while running the application:
 ---
 
 Feel free to ask any questions or submit issues via the GitHub Issues tab. Happy coding! 🚀
-
-```
